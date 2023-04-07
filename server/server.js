@@ -124,7 +124,7 @@ app.get('/getSessionInfo', (req, res) => {
     })
 })
 
-app.get('/pokemons', isLoggedIn, async (req, res) => {
+app.get('/pokemons', isLoggedIn, logRequest, async (req, res) => {
     // console.log(req.originalUrl)
     let remoteTypes = await axios.get('https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/types.json');
     remoteTypes = remoteTypes.data.map(item => item.english)

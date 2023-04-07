@@ -12,6 +12,7 @@
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
+    "react-modern-audio-player": "^1.4.0-rc.2",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
     "recharts": "^2.5.0",

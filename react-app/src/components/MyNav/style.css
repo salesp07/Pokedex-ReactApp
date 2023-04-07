@@ -1,0 +1,49 @@
+
+.navbar-brand{
+    padding: 0;
+}
+.title{
+    font-family: 'Pokemon-Hollow';
+    font-size: 40px;
+    margin-left: 10px;
+    padding-bottom: 10px
+}
+#navLogoContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /* margin-bottom: 20px; */
+    /* gap: 20px; */
+}
+
+#logoImg{
+    width: auto;
+    height: 70px;
+}
+
+.myNav{
+    padding-left: 5vw;
+    padding-right: 5vw;
+    background: linear-gradient(45deg, rgba(29, 236, 197, 0.8), rgba(91, 14, 214, 0.8) 100%);
+    color: #fff;
+}
+
+
+.nav-link{
+    font-size: 20px;
+    /* font-weight: bold;  */
+    color: white;
+}
+
+
+@media (max-width: 600px) {
+    .title {
+      display: none;
+    }
+  }
+
+.offcanvas {
+    color: white;
+    background-color: rgba(0,0,0, 0.4);
+}

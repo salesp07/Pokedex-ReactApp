@@ -1,0 +1,13 @@
+#checkboxes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.checkbox{
+    padding: 1vh 1vw;
+    width: 170px;
+    align-items: center;
+    vertical-align: center;
+}

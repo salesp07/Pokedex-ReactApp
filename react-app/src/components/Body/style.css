@@ -1,0 +1,39 @@
+
+.pokeCardImg{
+    width: 160px;
+    height: 160px;
+}
+
+.pokeContainer{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.poke{
+    padding: 15px;
+    padding-bottom: 0;
+    border: 1px solid #ced4da;
+    border-radius: 15px;
+    margin: 10px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px , rgba(255, 255, 255, 0.5) -3px -3px 6px 1px ;
+    transition: transform 0.3s ease;
+
+}
+
+.poke:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    filter: brightness(0.8) saturate(1.2);
+
+}
+
+#cardStats{
+    margin-top: 25px;
+    padding-top: 10px;
+    /* border-top: 1px solid gray; */
+}

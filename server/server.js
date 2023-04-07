@@ -87,7 +87,7 @@ async function handleErr(err, req, res, next) {
 
 app.get('/logout', (req, res) => {
     req.session.destroy();
-    return res.redirect('/login')
+    return res.json({ redirect: '/' })
 })
 
 app.post('/register', async (req, res) => {
@@ -117,18 +117,15 @@ app.post('/login', async (req, res) => {
     user.isAdmin ? res.json({ redirect: '/admin' }) : res.json({ redirect: '/pokemons' })
 })
 
-app.get('/isLoggedIn', (req, res) => {
-    res.json({ isLoggedIn: req.session.isLoggedIn })
-})
-
-app.get('/isAdmin', (req, res) => {
+app.get('/getSessionInfo', (req, res) => {
     res.json({
         isAdmin: req.session.user?.isAdmin,
         isLoggedIn: req.session.isLoggedIn
     })
 })
 
-app.get('/pokemons', isLoggedIn, logRequest, async (req, res) => {
+app.get('/pokemons', isLoggedIn, async (req, res) => {
+    // console.log(req.originalUrl)
     let remoteTypes = await axios.get('https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/types.json');
     remoteTypes = remoteTypes.data.map(item => item.english)
     let remotePokes = await axios.get(`https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/pokedex.json`);

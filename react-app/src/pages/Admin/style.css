@@ -1,0 +1,63 @@
+
+
+#topUsers{
+    margin-left: 50px;
+}
+
+.reportList{
+    width: 350px;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 7px;
+    height: 2px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+#badgeContainer{
+    width: 350px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.badge{
+    font-size: 15px;
+}
+
+.badge:hover{
+    cursor: pointer;
+}
+
+#adminContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 100px;
+    padding-top: 50px;
+    row-gap: 100px;
+    column-gap: 20px;
+}
+
+.chartContainer{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.chartTitle{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

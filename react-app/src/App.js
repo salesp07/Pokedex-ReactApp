@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './components/styles.css'
+import './styles.css'
 import { Route, Routes } from "react-router-dom";
-import Pokemons from "./routes/Pokemons";
-import Login from "./routes/Login";
-import Register from './routes/Register';
-import Admin from './routes/Admin';
+import Pokemons from "./pages/Pokemons/Pokemons";
+import Login from "./pages/Auth/Login";
+import Register from './pages/Auth/Register';
+import Admin from './pages/Admin/Admin';
 
 function App() {
 

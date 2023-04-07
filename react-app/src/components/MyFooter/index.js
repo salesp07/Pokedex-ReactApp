@@ -10,8 +10,8 @@ const MyFooter = () => {
       <Container fluid className="py-3 d-flex justify-content-center">
         <Row>
           <Col xs={12} md={12} className="text-center">
-            <a href="https://www.linkedin.com/in/pedro-sales-muniz" target="_blank" className="mx-3"><FaLinkedin size={32} color='#fff' /></a>
-            <a href="https://github.com/salesp07" target="_blank" className="mx-3"><FaGithub size={32} color='#fff'/></a>
+            <a href="https://www.linkedin.com/in/pedro-sales-muniz" target="_blank" rel="noreferrer" className="mx-3"><FaLinkedin size={32} color='#fff' /></a>
+            <a href="https://github.com/salesp07" target="_blank" rel="noreferrer" className="mx-3"><FaGithub size={32} color='#fff'/></a>
           </Col>
         </Row>
       </Container>

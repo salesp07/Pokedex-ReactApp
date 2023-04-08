@@ -96,7 +96,7 @@ async function handleErr(err, req, res, next) {
         err = new DatabaseError(err.message)
     }
     await Error.create({
-        username: req.session.user?.username || 'default',
+        username: req.session?.user?.username || 'default',
         name: err.name,
         endpoint: `${req.originalUrl}[${req.method}]`,
         code: err.code || 500

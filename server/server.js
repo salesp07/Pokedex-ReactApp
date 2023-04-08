@@ -135,6 +135,7 @@ app.post('/login', async (req, res) => {
 
 app.get('/getSessionInfo', (req, res) => {
     res.json({
+        "hello": "world",
         isAdmin: req.session.user?.isAdmin,
         isLoggedIn: req.session.isLoggedIn
     })

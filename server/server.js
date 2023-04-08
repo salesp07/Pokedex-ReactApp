@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require('cors');
-require('./db');
+// require('./db');
 const bcrypt = require("bcrypt")
 const axios = require('axios')
 const session = require('express-session');
@@ -9,6 +9,20 @@ const dotenv = require("dotenv")
 dotenv.config();
 require('express-async-errors');
 const moment = require('moment');
+const mongoose = require('mongoose');
+mongoose.set('strictQuery', false);
+
+
+const connectDB = async () => {
+    try {
+      await mongoose.connect(process.env.DB_STRING);
+      console.log(`Connected to DB`);
+    } catch (error) {
+      console.log("Couldn't connect to DB: ",error);
+      process.exit(1);
+    }
+  }
+
 const {
     PokemonBadRequest,
     DatabaseError,
@@ -222,7 +236,8 @@ app.get('*', (req, res) => {
 
 app.use(handleErr)
 
-// Start the server
-app.listen(process.env.PORT, () => {
-    console.log("Server started on port " + process.env.PORT);
-});
+connectDB().then(() => {
+    app.listen(process.env.PORT, () => {
+        console.log("Server started on port " + process.env.PORT);
+    })
+})

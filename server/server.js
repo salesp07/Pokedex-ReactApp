@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const cors = require('cors');
-// require('./db');
 const bcrypt = require("bcrypt")
 const axios = require('axios')
 const session = require('express-session');
@@ -71,7 +70,7 @@ function isLoggedIn(req, res, next) {
     if (req.session.isLoggedIn) {
         return next();
     }
-    return res.json({ redirect: '/login' })
+    return res.json({ errMsg: 'Not logged in' })
 }
 
 function isAdmin(req, res, next) {
@@ -140,17 +139,14 @@ app.post('/login', async (req, res) => {
 })
 
 app.get('/getSessionInfo', (req, res) => {
-    console.log('Session ID:', req.sessionID);
     console.log(req.session)
     res.json({
-        "hello": "world",
         isAdmin: req.session.user?.isAdmin,
         isLoggedIn: req.session.isLoggedIn
     })
 })
 
 app.get('/pokemons', isLoggedIn, logRequest, async (req, res) => {
-    // console.log(req.originalUrl)
     let remoteTypes = await axios.get('https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/types.json');
     remoteTypes = remoteTypes.data.map(item => item.english)
     let remotePokes = await axios.get(`https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/pokedex.json`);

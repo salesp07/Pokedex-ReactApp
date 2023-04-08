@@ -16,6 +16,7 @@ function Admin() {
     useEffect(() => {
         axios.get('/getSessionInfo', { withCredentials: true })
             .then(res => {
+                console.log(res.data)
                 if (res.data.isAdmin) setIsAdmin(true);
                 else if (res.data.isLoggedIn) window.location.href = '/pokemons';
                 else window.location.href = '/';

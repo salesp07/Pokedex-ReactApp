@@ -33,6 +33,7 @@ function Pokemons() {
             // localStorage.setItem('pokeData', JSON.stringify(response.data));
             setDefaultPokemons(res.data.pokemons)
             setPokemons(res.data.pokemons)
+            console.log('data fetched', res.data.pokemons)
             setIsLoggedIn(true)
         }
 
@@ -44,7 +45,7 @@ function Pokemons() {
         // cachedData? setPokemons(cachedData) : fetchData()
 
         axios.get('/getSessionInfo', { withCredentials: true }).then(res => {
-            if (!res.data.isLoggedIn) window.location.href = '/'   
+            if (!res.data.isLoggedIn) window.location.href = '/'
             else fetchData()
             if (res.data.isAdmin) setIsAdmin(true)
         })
@@ -73,12 +74,12 @@ function Pokemons() {
 
     return (
         <>
-            <MyNav isAdmin={isAdmin}/>
-            {isLoggedIn && 
+            <MyNav isAdmin={isAdmin} />
+            {isLoggedIn &&
                 <div id="container">
-                    <Player/>
+                    <Player />
                     <Filter defaultTypes={defaultTypes} setTypes={setTypes} types={types} setSearch={setSearch} />
-                    {pokemons.length === 0 && <h1 className="errMsg">No pokemons match your search.</h1>}
+                    {pokemons && pokemons.length === 0 && <h1 className="errMsg">No pokemons match your search.</h1>}
                     <Body pokemons={getPokes()} setCurrentPoke={setCurrentPoke} setShowModal={setShowModal} />
                     <Pagination setPage={setPage} pageNum={page} pageList={getPageList()} />
                     <MyModal
@@ -88,8 +89,8 @@ function Pokemons() {
                     />
                 </div>
             }
-            <MyFooter/>
-            
+            <MyFooter />
+
         </>
     );
 }

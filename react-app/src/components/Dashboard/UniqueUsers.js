@@ -7,6 +7,7 @@ function UniqueUsers() {
   useEffect(() => {
     axios.get('/uniqueUsers', { withCredentials: true })
       .then(res => {
+        console.log(res.data)
         setUniqueUsers(res.data);
       })
 

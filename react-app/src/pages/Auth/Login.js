@@ -12,6 +12,7 @@ function Login() {
     useEffect(() => {
         axios.get('/getSessionInfo', {withCredentials: true})
             .then(res => {
+                console.log(res.data)
                 if (res.data.isLoggedIn) window.location.href = '/pokemons';
             })
             .catch(err => console.log(err))

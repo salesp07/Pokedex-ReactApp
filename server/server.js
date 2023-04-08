@@ -44,6 +44,17 @@ const Error = require('./models/Error.js')
 app.use('/', express.static(__dirname + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+
+function printDetails(req, res, next) {
+    console.log(`Request URL: ${req.originalUrl}`);
+    console.log(`Request Type: ${req.method}`);
+    next();
+}
+
+app.use(printDetails);
+
+
 app.use(cors({
     origin: 'https://6430a4157e2e5217260bbdd7--mellifluous-basbousa-c69a9d.netlify.app/',
     methods: ['POST', 'GET', 'OPTIONS'],

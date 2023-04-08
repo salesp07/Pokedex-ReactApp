@@ -12,7 +12,7 @@ require('express-async-errors');
 const moment = require('moment');
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
-
+app.enable('trust proxy');
 
 const connectDB = async () => {
     try {
@@ -54,14 +54,15 @@ app.use(cors({
     credentials: true
 }));
 app.use(session({
+    name: 'sessionID',
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
         maxAge: 600000,
         httpOnly: true,
-        // secure: true,
-        // sameSite: 'none',
+        secure: true,
+        sameSite: 'none',
     },
     
 }));

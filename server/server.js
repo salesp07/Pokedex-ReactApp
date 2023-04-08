@@ -49,6 +49,7 @@ app.use(express.urlencoded({ extended: true }));
 function printDetails(req, res, next) {
     console.log(`Request URL: ${req.originalUrl}`);
     console.log(`Request Type: ${req.method}`);
+    consolelog('Request Origin: ${req.headers.origin}')
     next();
 }
 

@@ -15,13 +15,13 @@ mongoose.set('strictQuery', false);
 
 const connectDB = async () => {
     try {
-      await mongoose.connect(process.env.DB_STRING, { useNewUrlParser: true });
-      console.log(`Connected to DB`);
+        await mongoose.connect(process.env.DB_STRING, { useNewUrlParser: true });
+        console.log(`Connected to DB`);
     } catch (error) {
-      console.log("Couldn't connect to DB: ",error);
-      process.exit(1);
+        console.log("Couldn't connect to DB: ", error);
+        process.exit(1);
     }
-  }
+}
 
 const {
     PokemonBadRequest,
@@ -32,7 +32,7 @@ const {
     PokemonDuplicateError,
     PokemonNoSuchRouteError,
     BadRequest
-  } = require('./errors.js');
+} = require('./errors.js');
 
 // Import models
 const User = require('./models/User.js')
@@ -45,9 +45,15 @@ app.use('/', express.static(__dirname + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
+whitelist = ['http://localhost:3000', 'https://6430ad167e2e521d520bbee2--mellifluous-basbousa-c69a9d.netlify.app']
 app.use(cors({
-    origin: 'https://6430a4157e2e5217260bbdd7--mellifluous-basbousa-c69a9d.netlify.app',
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    },
     methods: ['POST', 'GET', 'OPTIONS'],
     credentials: true
 }));
@@ -108,7 +114,7 @@ app.get('/logout', (req, res) => {
 
 app.post('/register', async (req, res) => {
     const { username, password } = req.body
-    const userExists = await User.findOne({ username: username})
+    const userExists = await User.findOne({ username: username })
     if (userExists) throw new AuthError('Username not available')
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
@@ -123,7 +129,7 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req, res) => {
     const { username, password } = req.body
     let user = await User.findOne({ username: username })
-    if (!user) 
+    if (!user)
         throw new AuthError('Incorrect username or password')
     comp = await bcrypt.compare(password, user.password)
     if (!comp)
@@ -157,11 +163,11 @@ app.get('/topUsers', isLoggedIn, isAdmin, async (req, res) => {
 
 app.get('/topUsers/:endpoint', isLoggedIn, isAdmin, async (req, res) => {
     possibleEndpoints = ['GET', 'POST', 'PATCH', 'DELETE']
-    if (!possibleEndpoints.includes(req.params.endpoint)) 
+    if (!possibleEndpoints.includes(req.params.endpoint))
         throw new BadRequest('Invalid endpoint')
     const endpoint = `/pokemon[${req.params.endpoint}]`
     const data = await Request.aggregate([
-        {$match: {endpoint: endpoint}},
+        { $match: { endpoint: endpoint } },
     ]).sortByCount("username").limit(10);
     res.json(data)
 })

@@ -14,6 +14,7 @@ function Login() {
             .then(res => {
                 if (res.data.isLoggedIn) window.location.href = '/pokemons';
             })
+            .catch(err => console.log(err))
     }, [])
 
     const handleSubmit = async (e) => {

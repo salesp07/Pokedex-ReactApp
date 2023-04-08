@@ -60,8 +60,8 @@ app.use(session({
     cookie: {
         maxAge: 600000,
         httpOnly: true,
-        secure: true,
-        sameSite: 'none',
+        // secure: true,
+        // sameSite: 'none',
     },
     
 }));
@@ -170,9 +170,8 @@ app.get('/topUsers/:endpoint', isLoggedIn, isAdmin, async (req, res) => {
     res.json(data)
 })
 
-app.get('/uniqueUsers', isLoggedIn, isAdmin, async (req, res) => {
-    let now = new Date();
-    let currentHour = now.getHours();
+app.get('/uniqueUsers/:currentHour', isLoggedIn, isAdmin, async (req, res) => {
+    let currentHour = Number(req.params.currentHour)
     let hoursArray = [];
 
     // Generate the first array

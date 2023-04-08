@@ -5,7 +5,9 @@ import axios from '../../api/axios'
 function UniqueUsers() {
   const [uniqueUsers, setUniqueUsers] = useState(false);
   useEffect(() => {
-    axios.get('/uniqueUsers', { withCredentials: true })
+    let now = new Date();
+    let currentHour = now.getHours();
+    axios.get(`/uniqueUsers/${currentHour}`, { withCredentials: true })
       .then(res => {
         console.log(res.data)
         setUniqueUsers(res.data);

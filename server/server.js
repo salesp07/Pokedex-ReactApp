@@ -46,18 +46,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-function printDetails(req, res, next) {
-    console.log(`Request URL: ${req.originalUrl}`);
-    console.log(`Request Type: ${req.method}`);
-    console.log(`Request Origin: ${req.headers.origin}`)
-    next();
-}
-
-app.use(printDetails);
-
-
 app.use(cors({
-    origin: 'https://6430a4157e2e5217260bbdd7--mellifluous-basbousa-c69a9d.netlify.app/',
+    origin: 'http://localhost:3000',
     methods: ['POST', 'GET', 'OPTIONS'],
     credentials: true
 }));

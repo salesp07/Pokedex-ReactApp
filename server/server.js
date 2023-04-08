@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt")
 const axios = require('axios')
 const session = require('express-session');
 const dotenv = require("dotenv")
+const cookieParser = require('cookie-parser');
 dotenv.config();
 require('express-async-errors');
 const moment = require('moment');
@@ -44,6 +45,7 @@ const Error = require('./models/Error.js')
 app.use('/', express.static(__dirname + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 whitelist = ['http://localhost:3000', 'https://6430ad167e2e521d520bbee2--mellifluous-basbousa-c69a9d.netlify.app', 'https://mellifluous-basbousa-c69a9d.netlify.app']
 app.use(cors({

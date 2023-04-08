@@ -45,7 +45,7 @@ app.use('/', express.static(__dirname + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-whitelist = ['http://localhost:3000', 'https://6430ad167e2e521d520bbee2--mellifluous-basbousa-c69a9d.netlify.app']
+whitelist = ['http://localhost:3000', 'https://6430ad167e2e521d520bbee2--mellifluous-basbousa-c69a9d.netlify.app', 'https://mellifluous-basbousa-c69a9d.netlify.app']
 app.use(cors({
     origin: whitelist,
     methods: ['POST', 'GET', 'OPTIONS'],

@@ -58,9 +58,12 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        maxAge: 600000
+        maxAge: 600000,
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none',
     },
-    httpOnly: true
+    
 }));
 
 function isLoggedIn(req, res, next) {

@@ -45,7 +45,15 @@ app.use('/', express.static(__dirname + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 600000
+    },
+    httpOnly: true
+}));
 function printDetails(req, res, next) {
     console.log(`Request URL: ${req.originalUrl}`);
     console.log(`Request Type: ${req.method}`);
@@ -61,15 +69,7 @@ app.use(cors({
     methods: ['POST', 'GET', 'OPTIONS'],
     credentials: true
 }));
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        maxAge: 600000
-    },
-    httpOnly: true
-}));
+
 
 function isLoggedIn(req, res, next) {
     if (req.session.isLoggedIn) {

@@ -139,6 +139,7 @@ app.post('/login', async (req, res) => {
 })
 
 app.get('/getSessionInfo', (req, res) => {
+    console.log('Session ID:', req.sessionID);
     console.log(req.session)
     res.json({
         "hello": "world",

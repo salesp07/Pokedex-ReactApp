@@ -47,7 +47,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://6430a4157e2e5217260bbdd7--mellifluous-basbousa-c69a9d.netlify.app',
     methods: ['POST', 'GET', 'OPTIONS'],
     credentials: true
 }));

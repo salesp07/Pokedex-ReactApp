@@ -43,7 +43,7 @@ input[type=checkbox]
     height: 2px;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: lightgray;
+    background: linear-gradient(45deg, rgba(29, 236, 197, 0.8), rgba(91, 14, 214, 0.8) 100%);
     border-radius: 10px;
 }
 

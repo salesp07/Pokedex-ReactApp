@@ -3,7 +3,8 @@ import "./style.css";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import axios from "../../api/axios";
 
-function Body({ pokemons, setCurrentPoke, setShowModal, favorites, setFavorites }) {
+function Body({ pokemons, setCurrentPoke, setShowModal }) {
+  const [favorites, setFavorites] = useState([])
 
   useEffect(() => {
     const fetchFavorites = async () => {

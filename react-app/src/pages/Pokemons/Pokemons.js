@@ -24,6 +24,8 @@ function Pokemons() {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
     const [showGifs, setShowGifs] = useState(false)
+    const [favoritesOnly, setFavoritesOnly] = useState(false)
+    const [favorites, setFavorites] = useState([])
 
     const PAGE_SIZE = 12;
 
@@ -59,9 +61,12 @@ function Pokemons() {
         if (search.length !== 0) filteredPokes = filteredPokes.filter(poke => {
             return poke.name.english.toLowerCase().includes(search.toLowerCase()) || String(poke.id).includes(search)
         })
+        if (favoritesOnly){
+            filteredPokes = filteredPokes.filter(poke => favorites.includes(poke.id))
+        }
         setPokemons(filteredPokes)
         setPage(1)
-    }, [types, defaultPokemons, search])
+    }, [types, defaultPokemons, search, favoritesOnly, favorites])
 
 
     const getPokes = () => {
@@ -90,8 +95,9 @@ function Pokemons() {
                         <Button variant="outline-success" onClick={toggleShowGifs} className="danceBtn">Everybody Dance! <FaPlay size={13} /></Button>
                     }
                     <Filter defaultTypes={defaultTypes} setTypes={setTypes} types={types} setSearch={setSearch} />
+                    <Button variant="outline-primary" onClick={()=>setFavoritesOnly(!favoritesOnly)} className="favoritesBtn">{favoritesOnly ? 'Show All' : 'Show Favorites'}</Button>
                     {pokemons && pokemons.length === 0 && <h1 className="errMsg">No pokemons match your search.</h1>}
-                    <Body pokemons={getPokes()} setCurrentPoke={setCurrentPoke} setShowModal={setShowModal} />
+                    <Body pokemons={getPokes()} setCurrentPoke={setCurrentPoke} setShowModal={setShowModal} favorites={favorites} setFavorites={setFavorites}/>
                     <Pagination setPage={setPage} pageNum={page} pageList={getPageList()} />
 
                     <MyModal

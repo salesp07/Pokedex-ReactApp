@@ -41,8 +41,8 @@ function Register() {
                 <Form.Control type="password" placeholder="Password" className="me-2 authInput" name='password' required autoComplete={false}/>
                 <Form.Control type="password" placeholder="Repeat password" className="me-2 authInput" name='repeat-password' required autoComplete={false}/>
                 <p>Already have an account? <Link to="/">Login</Link></p><br />
-                <Button variant="success" className='authBtn' type='submit'>Register</Button>
                 {errMsg && <p className='authErrMsg'>{errMsg}</p>}
+                <Button variant="success" className='authBtn' type='submit'>Register</Button>
             </form>
             <MyFooter />
         </div>

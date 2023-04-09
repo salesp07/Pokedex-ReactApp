@@ -41,8 +41,8 @@ function Login() {
             {/* <input type="password" placeholder="Password" name='password' className='authInput' required/><br/> */}
             <p>Don't have an account? <Link to="/register">Register</Link></p>
             <br/>
-            <Button variant="success" className='authBtn' type='submit'>Login</Button>
             {errMsg && <p className='authErrMsg'>{errMsg}</p>}
+            <Button variant="success" className='authBtn' type='submit'>Login</Button>
         </form>
         <MyFooter />
     </div>

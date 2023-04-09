@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
   isAdmin: {
     type: Boolean,
     default: false
+  },
+  favorites: {
+    type: Array,
+    default: []
   }
 }, {timestamps: true})
 

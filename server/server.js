@@ -49,7 +49,7 @@ app.use(cookieParser());
 whitelist = ['http://localhost:3000', 'https://6430ad167e2e521d520bbee2--mellifluous-basbousa-c69a9d.netlify.app', 'https://mellifluous-basbousa-c69a9d.netlify.app']
 app.use(cors({
     origin: whitelist,
-    methods: ['POST', 'GET', 'OPTIONS'],
+    methods: ['POST', 'GET', 'PATCH', 'OPTIONS'],
     credentials: true
 }));
 app.use(session({
@@ -234,6 +234,26 @@ app.get('/recentErrors', isLoggedIn, isAdmin, async (req, res) => {
 app.get('/errorsByEndpoint', isLoggedIn, isAdmin, async (req, res) => {
     const data = await Error.aggregate().sortByCount("endpoint").limit(5);
     res.json(data)
+})
+
+app.patch('/addFavorite/:id', isLoggedIn, async (req, res) => {
+    const id = Number(req.params.id)
+    // const { mode } = req.params
+    if (id === undefined || typeof id !== "number" || id < 1 && id > 809) throw new BadRequest('Invalid id')
+    const newUser = await User.findOneAndUpdate({ username: req.session.user.username }, { $addToSet: { favorites: id } }, { new: true })
+    console.log(newUser)
+    res.json({ message: 'Added to favorites' })
+})
+
+app.patch('/removeFavorite/:id', isLoggedIn, async (req, res) => {
+    const id = Number(req.params.id)
+    if (id === undefined || typeof id !== "number" || id < 1 && id > 809) throw new BadRequest('Invalid id')
+    await User.findOneAndUpdate({ username: req.session.user.username }, { $pull: { favorites: id } })
+    res.json({ message: 'Removed from favorites' })
+})
+app.get('/favorites', isLoggedIn, async (req, res) => {
+    const user = await User.findOne({ username: req.session.user.username })
+    res.json(user.favorites)
 })
 
 app.get('*', (req, res) => {

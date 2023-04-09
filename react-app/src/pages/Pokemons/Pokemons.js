@@ -9,6 +9,8 @@ import MyNav from "../../components/MyNav";
 import MyFooter from "../../components/MyFooter";
 import './style.css';
 import Player from "../../components/Player";
+import Button from "react-bootstrap/esm/Button";
+import { FaPlay, FaStop } from "react-icons/fa";
 
 function Pokemons() {
     const [defaultPokemons, setDefaultPokemons] = useState([]);
@@ -21,6 +23,7 @@ function Pokemons() {
     const [showModal, setShowModal] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
+    const [showGifs, setShowGifs] = useState(false)
 
     const PAGE_SIZE = 12;
 
@@ -72,16 +75,25 @@ function Pokemons() {
         return Array.from({ length: totalPages }, (_, i) => i).filter(x => x >= page - 3 && x > 0 && x <= page + 3 && x <= totalPages)
     }
 
+    const toggleShowGifs = () => {
+        setShowGifs(!showGifs)
+    }
+
     return (
         <>
-            <MyNav isAdmin={isAdmin} />
+            <MyNav isAdmin={isAdmin} showGifs={showGifs} />
             {isLoggedIn &&
                 <div id="container">
                     <Player />
+                    {showGifs ?
+                        <Button variant="outline-danger" onClick={toggleShowGifs} className="danceBtn">Stop Dancing <FaStop size={13} /></Button> :
+                        <Button variant="outline-success" onClick={toggleShowGifs} className="danceBtn">Everybody Dance! <FaPlay size={13} /></Button>
+                    }
                     <Filter defaultTypes={defaultTypes} setTypes={setTypes} types={types} setSearch={setSearch} />
                     {pokemons && pokemons.length === 0 && <h1 className="errMsg">No pokemons match your search.</h1>}
                     <Body pokemons={getPokes()} setCurrentPoke={setCurrentPoke} setShowModal={setShowModal} />
                     <Pagination setPage={setPage} pageNum={page} pageList={getPageList()} />
+
                     <MyModal
                         show={showModal}
                         onHide={() => setShowModal(false)}

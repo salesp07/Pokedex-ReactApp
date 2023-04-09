@@ -1,3 +1,8 @@
 #container{
     padding: 0 7vw 0 7vw;
 }
+.danceBtn{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}

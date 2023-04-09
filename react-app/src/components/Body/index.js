@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import "./style.css";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import axios from "../../api/axios";
@@ -13,7 +13,7 @@ function Body({ pokemons, setCurrentPoke, setShowModal, favorites, setFavorites 
       setFavorites(favs)
     }
     fetchFavorites()
-  }, [])
+  }, [setFavorites])
 
   const getImgUrl = (id) => {
     let newId = ("0".repeat(3 - id.length)) + id

@@ -47,8 +47,9 @@ function Body({ pokemons, setCurrentPoke, setShowModal, favorites, setFavorites 
           <img className="pokeCardImg" alt="" src={getImgUrl(String(item.id))}/>
           <div id="cardStats">
             {favorites.includes(item.id)  ?
-              <FaStar size={17} onClick={(e) => toggleFavorite(e, item.id)}/>: <FaRegStar size={17} onClick={(e) => toggleFavorite(e, item.id)}/>
-
+              <FaStar size={17} onClick={(e) => toggleFavorite(e, item.id)} className="star"/> 
+              : 
+              <FaRegStar size={17} onClick={(e) => toggleFavorite(e, item.id)} className="star"/>
             }
             <p>#{item.id} {item.name.english}</p>
           </div>

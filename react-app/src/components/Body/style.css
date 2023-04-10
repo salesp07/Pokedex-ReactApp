@@ -38,10 +38,6 @@
     /* border-top: 1px solid gray; */
 }
 
-.star {
-    transition: transform 0.1s ease;
-}
-
 .star:hover{
     cursor: pointer;
     transform: scale(1.2);

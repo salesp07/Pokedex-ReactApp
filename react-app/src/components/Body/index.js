@@ -31,12 +31,12 @@ function Body({ pokemons, setCurrentPoke, setShowModal, favorites, setFavorites 
     e.stopPropagation();
     console.log(id)
     if (favorites.includes(id)) {
-      await axios.patch('removeFavorite/' + id, {}, { withCredentials: true })
       setFavorites(favorites.filter(item => item !== id))
+      await axios.patch('removeFavorite/' + id, {}, { withCredentials: true })
     } else {
       console.log('adding favorite')
-      await axios.patch('addFavorite/' + id, {}, { withCredentials: true })
       setFavorites([...favorites, id])
+      await axios.patch('addFavorite/' + id, {}, { withCredentials: true })
     }
   }
   

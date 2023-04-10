@@ -36,6 +36,20 @@ const playList = [
     src: '/emotion.mp3',
     id: 4,
   },
+  {
+    name: 'Pokemon Theme Song',
+    writer: 'Jason Paige',
+    img: '/logo2.png',
+    src: '/pokemon_theme.mp3',
+    id: 5,
+  },
+  {
+    name: 'Pokemon World',
+    writer: 'Anime Allstars',
+    img: '/logo2.png',
+    src: '/pokemon_world.mp3',
+    id: 6,
+  },
 ]
 
 function Player() {

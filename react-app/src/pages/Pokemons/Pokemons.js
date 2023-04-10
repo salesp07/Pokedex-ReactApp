@@ -95,7 +95,7 @@ function Pokemons() {
                         <Button variant="outline-success" onClick={toggleShowGifs} className="danceBtn">Everybody Dance! <FaPlay size={13} /></Button>
                     }
                     <Filter defaultTypes={defaultTypes} setTypes={setTypes} types={types} setSearch={setSearch} />
-                    <Button variant="outline-primary" onClick={()=>setFavoritesOnly(!favoritesOnly)} className="favoritesBtn">{favoritesOnly ? 'Show All' : 'Show Favorites'}</Button>
+                    <Button variant="outline-primary" onClick={()=>setFavoritesOnly(!favoritesOnly)} id="favoritesBtn">{favoritesOnly ? 'Show All' : 'Show Favorites'}</Button>
                     {pokemons && pokemons.length === 0 && <h1 className="errMsg">No pokemons match your search.</h1>}
                     <Body pokemons={getPokes()} setCurrentPoke={setCurrentPoke} setShowModal={setShowModal} favorites={favorites} setFavorites={setFavorites}/>
                     <Pagination setPage={setPage} pageNum={page} pageList={getPageList()} />

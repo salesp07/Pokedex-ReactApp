@@ -19,11 +19,6 @@
     justify-content: center;
     background: linear-gradient(45deg, rgba(29, 236, 197, 0.8), rgba(91, 14, 214, 0.8) 100%);
 }
-/* 
-.authPage a{
-    color: white;
-} */
-
 
 .authInput{
     padding: 8px 14px;
@@ -60,4 +55,32 @@
 .authLogoImg{
     width: auto;
     height: 120px;
+}
+
+
+
+@media (max-width: 600px){
+    .authContainer{
+        width: 95vw;
+        padding: 40px 15px;
+    }
+
+    .authTitle{
+        font-size: 30px;
+        padding-bottom: 10px;
+    }
+    p{
+        font-size: 14px;
+    }
+
+    .authLogo{
+        font-size: 45px;
+    }
+    .authLogoImg{
+        height: 80px;
+    }
+    .authLogoContainer{
+        gap: 10px;
+    }
+    
 }

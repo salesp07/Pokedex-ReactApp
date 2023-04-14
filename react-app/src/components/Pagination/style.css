@@ -25,3 +25,13 @@
     background-color: #007bff;
     color: #fff;
   }
+
+  
+
+@media (max-width: 600px){
+  .paginationButton {
+    font-size: 14px;
+    margin: 0.5vw;
+    padding: 3px 7px;
+  }
+}

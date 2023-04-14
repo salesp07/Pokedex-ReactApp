@@ -1,5 +1,5 @@
 import AudioPlayer from 'react-modern-audio-player';
-
+import { useState, useEffect } from 'react';
 const playList = [
   {
     name: 'Littleroot Town',
@@ -52,11 +52,37 @@ const playList = [
   },
 ]
 
+const mobileUI = {
+  all: false,
+  playButton: true,
+  playList: true,
+  prevNnext: true,
+  volume: true,
+  volumeSlider: true,
+  repeatType: false,
+  trackTime: false,
+  trackInfo: false,
+  artwork: false,
+  progress: false,
+};
+
+
 function Player() {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResizeWindow = () => setScreenWidth(window.innerWidth);
+     // subscribe to window resize event "onComponentDidMount"
+     window.addEventListener("resize", handleResizeWindow);
+     return () => {
+       // unsubscribe "onComponentDestroy"
+       window.removeEventListener("resize", handleResizeWindow);
+     };
+   }, []);
+
   return (
     <AudioPlayer
       playList={playList}
-      activeUI={{
+      activeUI={screenWidth < 800 ? mobileUI : {
         all: true,
         progress: "waveform",
       }} />

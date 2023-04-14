@@ -16,10 +16,10 @@ function MyNav({ isAdmin, showGifs }) {
 
       <Navbar key={"md"} bg="light" expand={"md"} className="mb-3 myNav" sticky='top'>
         {showGifs &&
-          <>
-            <img style={{ position: "absolute", top: '0', width: "100px", left: '600px', zIndex: -1 }} src="/dance1.gif" alt='pokemon dancing'/>
-            <img style={{ position: "absolute", top: '0', left: '700px', width: "140px" }} src="/dance2.gif" alt='pikachu dancing'/>
-          </>
+          <div className='gifContainer'>
+            <img style={{ width: "100px" }} src="/dance1.gif" alt='pokemon dancing'/>
+            <img style={{ width: "140px" }} id="pikaGif" src="/dance2.gif" alt='pikachu dancing'/>
+          </div>
         }
         <Container fluid>
           <div id='navLogoContainer'>

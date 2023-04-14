@@ -41,9 +41,26 @@
     .title {
       display: none;
     }
+    .gifContainer{
+        column-gap: 0;
+    }
+    #pikaGif{
+        margin-left: -12vw;
+    }
+
   }
 
 .offcanvas {
     color: white;
     background-color: rgba(0,0,0, 0.4);
+}
+
+.gifContainer{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    right: 1vw;
+    top: 0px;
 }

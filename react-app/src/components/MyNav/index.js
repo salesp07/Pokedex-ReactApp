@@ -34,9 +34,9 @@ function MyNav({ isAdmin, showGifs }) {
             placement="end"
           >
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${"md"}`}>
+              {/* <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${"md"}`}>
                 Pokedex Menu
-              </Offcanvas.Title>
+              </Offcanvas.Title> */}
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3 navLinks">

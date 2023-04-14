@@ -42,7 +42,6 @@
 .modalImg {
   width: 55%;
   height: auto;
-  /* min-width: 250px; */
   align-self: center;
   margin-right: 40px;
   flex: 0.8;
@@ -60,4 +59,23 @@ p {
   margin-bottom: 5px;
   margin-left: 7px;
   font-weight: 600;
+}
+
+
+
+@media (max-width: 600px){
+  .modal-body {
+    padding: 0px;
+    padding-bottom: 15px;
+  }
+  #modal{
+    width: 90vw;
+  }
+  .modalImg{
+    width: 100%;
+    /* height: auto; */
+    margin: 0px;
+    padding: 10px;
+    flex: 1;
+  }
 }

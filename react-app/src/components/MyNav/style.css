@@ -52,14 +52,14 @@
 
 .offcanvas {
     color: white;
-    background: linear-gradient(45deg, rgba(29, 236, 197, 0.8), rgba(91, 14, 214, 0.8) 100%);
+    background: rgba(91, 175,213, 1);
     text-align: center;
 }
 
 .offcanvas-header {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
     padding: 1rem 1rem;
     color: white !important;
 }

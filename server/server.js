@@ -46,15 +46,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-whitelist = ['http://localhost:3000', 'https://6430ad167e2e521d520bbee2--mellifluous-basbousa-c69a9d.netlify.app', 'https://mellifluous-basbousa-c69a9d.netlify.app']
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://mellifluous-basbousa-c69a9d.netlify.app");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
-app.options('*', cors({
-  origin: whitelist,
-  methods: ['POST', 'GET', 'PATCH', 'OPTIONS'],
-  credentials: true
-}));
-
-
+whitelist = ['http://localhost:3000', 'https://6430ad167e2e521d520bbee2--mellifluous-basbousa-c69a9d.netlify.app', 'https://mellifluous-basbousa-c69a9d.netlify.app'
 app.use(cors({
     origin: whitelist,
     methods: ['POST', 'GET', 'PATCH', 'OPTIONS'],

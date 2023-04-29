@@ -47,6 +47,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 whitelist = ['http://localhost:3000', 'https://6430ad167e2e521d520bbee2--mellifluous-basbousa-c69a9d.netlify.app', 'https://mellifluous-basbousa-c69a9d.netlify.app']
+
+app.options('*', cors({
+  origin: whitelist,
+  methods: ['POST', 'GET', 'PATCH', 'OPTIONS'],
+  credentials: true
+}));
+
+
 app.use(cors({
     origin: whitelist,
     methods: ['POST', 'GET', 'PATCH', 'OPTIONS'],

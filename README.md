@@ -36,7 +36,7 @@ SESSION_SECRET="Very strong password"
 
 7. Run `nodemon` on your cmd. Your backend server will be running on port 8081.
 
-8. Navigate into the `./react-app` directory and run the command `npm install` on your cmd
+8. Open another cmd, navigate into the `./react-app` directory and run the command `npm install`
 
 9. Run the command `npm start` on your cmd.
 

@@ -45,7 +45,7 @@ SESSION_SECRET="Very strong password"
 
 ## How to use main features
 
-## Pokemons
+### Pokemons
 - Filter or search pokemons by typing on the search input or clicking the filter checkboxes
 - Play pokemon OST, change the volume, switch songs through the media player on top
 - Make pokemons dance throught the 'Everybody Dance' button

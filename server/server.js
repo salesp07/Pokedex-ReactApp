@@ -43,7 +43,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "https://mellifluous-basbousa-c69a9d.netlify.app");
+    res.header("Access-Control-Allow-Origin", "https://pokedex-salesp07.netlify.app");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });

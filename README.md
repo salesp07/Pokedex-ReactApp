@@ -18,7 +18,7 @@ Backend - Node.js, MongoDB Altlas
 
 2. Clone this repo from your command line.
 
-3. Navigate into the project folder, open the terminal and run the command `npm install`
+3. Navigate into the `./server` directory and run the command `npm install`
 
 4. Create a new file in the public project directory and call it `.env`. 
 
@@ -34,7 +34,14 @@ PORT=8081
 SESSION_SECRET="Very strong password"
 ```
 
-7. Run `nodemon` on your cmd and go to http://localhost:8081/ on your browser.
+7. Run `nodemon` on your cmd. Your backend server will be running on port 8081.
+
+8. Navigate into the `./react-app` directory and run the command `npm install` on your cmd
+
+9. Run the command `npm start` on your cmd.
+
+10. Go to http://localhost:3000/ on your browser.
+
 
 ## How to use main features
 

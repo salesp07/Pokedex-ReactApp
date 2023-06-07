@@ -1,3 +1,5 @@
+<img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=salesp07.Pokedex-ReactApp">
+
 # Pokedex React App
 <img src="https://raw.githubusercontent.com/salesp07/salesp07.github.io/master/public/pokedex-responsive.png" alt="MyMind screenshot"/>
 
@@ -9,7 +11,7 @@ Pedro Sales-Muniz
 <img src="https://contrib.rocks/image?repo=salesp07/Pokedex-ReactApp" />
 
 ## Technologies used
-Frontend - React\
+Frontend - React.js, Recharts.js\
 Backend - Node.js, MongoDB Altlas
 
 ## How to Run the project
@@ -42,10 +44,16 @@ SESSION_SECRET="Very strong password"
 
 10. Go to http://localhost:3000/ on your browser.
 
+## Debugging
+If you get a CORS error when making requests to the backend server:
+- make sure to include https://localhost:3000 in the `whitelist` array in `./backend/server.js`
+- change the `secure` attribute to `false` in the session obj in in `./backend/server.js`
+
 
 ## How to use main features
 
 ### Pokemons
+- Go to the SignUp page and create a new account
 - Filter or search pokemons by typing on the search input or clicking the filter checkboxes
 - Play pokemon OST, change the volume, switch songs through the media player on top
 - Make pokemons dance throught the 'Everybody Dance' button

@@ -36,7 +36,14 @@ const Request = require('./models/Request.js')
 const Error = require('./models/Error.js')
 
 
+
 // Middleware
+const MongoDBStore = require('connect-mongodb-session')(session);
+const store = new MongoDBStore({
+    uri: 'mongodb://localhost/my-database',
+    collection: 'sessions',
+  });
+  
 app.use('/', express.static(__dirname + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -66,7 +73,7 @@ app.use(session({
         secure: true,
         sameSite: 'none',
     },
-    
+    store: store,
 }));
 
 function isLoggedIn(req, res, next) {

@@ -40,10 +40,10 @@ const Error = require('./models/Error.js')
 // Middleware
 const MongoDBStore = require('connect-mongodb-session')(session);
 const store = new MongoDBStore({
-    uri: 'mongodb://localhost/my-database',
+    uri: process.env.DB_STRING,
     collection: 'sessions',
   });
-  
+
 app.use('/', express.static(__dirname + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -56,12 +56,12 @@ app.use(function(req, res, next) {
   });
   
 const whitelist = ['http://localhost:8000', 'https://pokedex-salesp07.netlify.app/']
-
 app.use(cors({
     origin: whitelist,
     methods: ['POST', 'GET', 'PATCH', 'OPTIONS'],
     credentials: true
 }));
+
 app.use(session({
     name: 'sessionID',
     secret: process.env.SESSION_SECRET,
